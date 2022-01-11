@@ -1,8 +1,8 @@
 # Testing React Components
 
-Terrible news! Aliens have invaded the Earth. 👽 👾 👽 👾 👽 👾 
+Terrible news! Aliens have invaded the Earth. 👽 👾 👽 👾 👽 👾
 
-Luckily, their species is _incredibly_ bureaucratic 📝 
+Luckily, their species is _incredibly_ bureaucratic 📝
 
 The aliens have promised to spare the Earth if we can submit form W-12-M without making a single mistake. You've been chosen for your skills at testing React components to ensure we cannot get it wrong.
 
@@ -16,7 +16,7 @@ But don't be afraid - not even of the aliens. There are some extra hints availab
 
 🌍 🌍 🌍
 
-Let's save humanity. 
+Let's save humanity.
 
 🌍 🌍 🌍
 
@@ -66,4 +66,4 @@ The page will reload if you make edits 👍
 
 You will also see any lint errors in the console ✅
 
-Head over to [Activity 1](./activities/activity-1.md) to get started!
+Head over to [Activity 1](./activities/activity_1.md) to get started!

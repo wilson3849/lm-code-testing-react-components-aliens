@@ -7,6 +7,6 @@ test('renders form element', () => {
 	const { container } = render(<W12MForm />);
 
 	// the container is just a normal DOM element, so we can look at normal properties like '.firstChild'
-	// the firstChild of our container should be our form element
+	// for example, the firstChild of our container should be our form element
 	expect(container.firstChild).toHaveClass('w12MForm');
 });
