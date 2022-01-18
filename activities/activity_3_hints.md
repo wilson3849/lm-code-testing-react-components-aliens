@@ -4,12 +4,12 @@ Let's work through creating one of the fields.
 
 Here's an example (but broken) React component for our SpeciesName:
 
-```JavaScript
+```TSX
 const SpeciesName : React.FC = () => (
-    <div>
-        <label for='speciesName'>Species Name</label>
+    <>
+        <label htmlFor='speciesName'>Species Name</label>
         <input id='speciesName' type='text' value={speciesName} onChange={onChangeSpeciesName} />
-    </div> );
+    </> );
 ```
 
 ---
@@ -20,7 +20,7 @@ As we discussed already, we want our **form** to manage all of the individual `i
 
 So, in `W12MForm.tsx` we can add some code to hold the state for this component:
 
-```JavaScript
+```TSX
 const [speciesName, setSpeciesName] = useState<string>('humans');
 ```
 
@@ -28,8 +28,8 @@ const [speciesName, setSpeciesName] = useState<string>('humans');
 
 Then, also in `W12MForm.tsx`, we can pass the state value and a function to handle changing it into our `<SpeciesName/>` component:
 
-```JavaScript
-<SpeciesName speciesName={speciesName} onChangeSpeciesName={(e) => setSpeciesName(e.target.value)} />
+```TSX
+<SpeciesName speciesName={speciesName} onChangeSpeciesName={(e : any) => setSpeciesName(e.target.value)} />
 ```
 
 💡 The `onChange` event for an input gives us an event parameter, often called `e`, which contains the new value held by the input, which is stored in `e.target`. We can pass the value of this target to our setter function from `useState` to update the state variable whenever the form changes - e.g. when the user types in the input box.
@@ -38,29 +38,25 @@ Then, also in `W12MForm.tsx`, we can pass the state value and a function to hand
 
 Of course, we'll have to update our `<SpeciesName>` component to receive those props, connecting the state in the form to the values we're using in the child component. Change this:
 
-```JavaScript
+```TSX
 const SpeciesName : React.FC = () => /* ... etc... */
 ```
 
 to this:
 
-```JavaScript
-interface SpeciesNameProps{
+```TSX
+interface SpeciesNameProps { 
 	speciesName: string;
-	onChangeSpeciesName: Function;
-	// NB: This is a non-specific function type which will allow ANY onChange function.
-	//     As usual in TypeScript, we could improve it by being more specific!
-	//
-	//     "onChange" functions have a particular signature: (e : ReactChangeEvent<T>) => void
-	//     			where "T" depends on the element being changed
-	//
-	//     So, for an <input> element, instead of "Function" we could write:
-	//            (e : ReactChangeEvent<HTMLInputElement>) => void
-	//
-	//     For now, let's leave it as Function but be aware that it's a) possible and b) desirable to improve this!
+	onChangeSpeciesName: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	
+	// You might be wondering what line 50 (e: React.ChangeEvent<HTMLInputElement>) is saying. Let's break it down! 🔨😃 
+
+	// React has different ChangeEvents for different elements that might change. Imagine a React.ChangeEvent<HTMLTextAreaElement> or React.ChangeEvent<HTMLSelectElement>, these are the specific events you get back from changing specific types of element. This means when you write the code you know what type of element you're reacting to, so you might want to do different things with a select versus an input text box.
+	
+	// If you wanted the same function for all of them (for example, if we wanted to refactor our forms so we had one function that handled all of them), you could write a function with the signature (e : React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void, and pass that function as onChange to any of those kinds of elements!
 }
 
-const SpeciesName : React.FC<SpeciesNameProps> = ( { speciesName, onChangeSpeciesName }) => /* ... etc... */
+const SpeciesName : React.FC<SpeciesNameProps> = ({ speciesName, onChangeSpeciesName }) => /* ... etc... */
 ```
 
 We've created an input which keeps its state in the form component and updates it with any changes - hooray! 🥳

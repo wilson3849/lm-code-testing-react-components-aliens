@@ -2,43 +2,43 @@
 
 Let's imagine our Species Name field works like this:
 
-```JavaScript
+```TSX
 	const SpeciesName : React.FC<SpeciesNameProps> = ({ speciesName, onChangeSpeciesName }) => (
-		<div>
+		<>
 			<label for='speciesName'>Species Name</label>
 			<input id='speciesName' type='text' value={speciesName} onChange={onChangeSpeciesName} />
-		</div>
+		</>
 	);
 ```
 
 We need to add validation. So first, let's intercept the onChange event:
 
-```JavaScript
+```TSX
 	const SpeciesName : React.FC<SpeciesNameProps> = ({ speciesName, onChangeSpeciesName }) => (
-		<div>
+		<>
 			<label for='speciesName'>Species Name</label>
 			<input id='speciesName' type='text' value={speciesName}
 					onChange={(e) => { onChangeSpeciesName(e); } } />
-		</div>
+		</>
 	);
 ```
 
 💡 This code does the **exact same thing** as the first snippet. It simply passes the change event back to the handler function in our form. However, we now have a place to add extra logic to our component in that function!
 
-```JavaScript
+```TSX
 	const SpeciesName  : React.FC<SpeciesNameProps> = ({ speciesName, onChangeSpeciesName }) => (
-		<div>
+		<>
 			<label for='speciesName'>Species Name</label>
 			<input id='speciesName' type='text' value={speciesName}
 					onChange={(e) => { // extra logic goes here!
 										onChangeSpeciesName(e); } } />
-		</div>
+		</>
 	);
 ```
 
 We need a validation function:
 
-```JavaScript
+```TSX
 	const SpeciesName  : React.FC<SpeciesNameProps> = ({ speciesName, onChangeSpeciesName }) => {
 		const validate : (value : string) => string | undefined = (value) => {
 		// do stuff
@@ -46,7 +46,7 @@ We need a validation function:
 		}
 
 		return(
-		<div>
+		<>
 			<label for='speciesName'>Species Name</label>
 			<input
 				id='speciesName'
@@ -58,7 +58,7 @@ We need a validation function:
 				}
 				}
 			/>
-		</div>
+		</>
 
 	);
 }
@@ -66,7 +66,7 @@ We need a validation function:
 
 And to store the result in state:
 
-```JavaScript
+```TSX
 	const SpeciesName : React.FC<SpeciesNameProps> = ({ speciesName, onChangeSpeciesName }) => {
 
 		const [ errorMessage, setErrorMessage ] = useState<string | undefined>(undefined);
@@ -77,7 +77,7 @@ And to store the result in state:
 		}
 
 		return(
-		<div>
+		<>
 			<label for='speciesName'>Species Name</label>
 			<input
 				id='speciesName'
@@ -90,7 +90,7 @@ And to store the result in state:
 				}
 				}
 			/>
-		</div>
+		</>
 
 	);
 }
@@ -104,7 +104,7 @@ Finally, we need to add an `<ErrorMessage>` component to the project, which take
 
 Then we add the `<ErrorMessage>` to our Species Name field:
 
-```JavaScript
+```TSX
 	const SpeciesName : React.FC<SpeciesNameProps> = ({ speciesName, onChangeSpeciesName }) => {
 
 		const [ errorMessage, setErrorMessage ] = useState<string | undefined>('');
@@ -115,7 +115,7 @@ Then we add the `<ErrorMessage>` to our Species Name field:
 		}
 
 		return(
-		<div>
+		<>
 			<label for='speciesName'>Species Name</label>
 			<input
 				id='speciesName'
@@ -129,7 +129,7 @@ Then we add the `<ErrorMessage>` to our Species Name field:
 				}
 			/>
 			<ErrorMessage errorMessage={errorMessage}/>
-		</div>
+		</>
 
 	);
 }

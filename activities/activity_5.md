@@ -30,13 +30,13 @@ The smart place seems like our `onChange` handlers. We can intercept them and ad
 
 Let's start with a text input, e.g. `SpeciesName` or `PlanetName`. Up to now, each component probably includes something like this:
 
-```JavaScript
+```TSX
 <input type="text" value={someValueFromProps} onChange={someFunctionFromProps}/>
 ```
 
 But we can intercept that function to add extra logic and then call the original function
 
-```JavaScript
+```TSX
 <input type="text" onChange={(e) => { /* extra logic goes here */ someFunctionFromProps(e); }}/>
 ```
 
@@ -44,7 +44,7 @@ Remember `e.target.value` contains the current value of the input, which we can 
 
 One way to do this is to add a validation function in our component. In pseudocode this might look a bit like this:
 
-```JavaScript
+```TSX
 	const someComponent : React.FC<SomeComponentPropsInterface> = (props) => {
 
 		const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
@@ -74,7 +74,7 @@ One way to do this is to add a validation function in our component. In pseudoco
 
 👉 Now we need to write the `validate` function. It takes one parameter, which is a `string`, and returns a `string | undefined`, so it's going to look something like this:
 
-```JavaScript
+```TSX
 // Take some time to understand this syntax...
 // note the type annotation of "(value: string) => string | undefined" - so TypeScript knows exactly what parameters and
 // return values to expect from our validation functions, making each of them easy to write!

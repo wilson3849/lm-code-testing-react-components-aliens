@@ -11,8 +11,8 @@ Your job is to create the form using React, and to use the power of React testin
 This will mean writing:
 
 1. **The form itself**, including basic testing
-2. **Validation code** for the form fields which displays errors to the user if data is invalid
-3. **Automated Tests** which checks that these validation rules actually work given different types of data
+2. **Validation code** for the form fields which display errors to the user if data is invalid
+3. **Automated Tests** which check that these validation rules actually work given different types of data
 
 Before we get into it, the aliens left a short note for you:
 
