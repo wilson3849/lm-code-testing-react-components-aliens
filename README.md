@@ -1,6 +1,6 @@
 # Testing React Components
 
-Terrible news! Aliens have invaded the Earth. 👽 👾 👽 👾 👽 👾
+Terrible news! Aliens have invaded Earth. 👽 👾 👽 👾 👽 👾
 
 Luckily, their species is _incredibly_ bureaucratic 📝
 

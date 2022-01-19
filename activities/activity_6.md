@@ -4,7 +4,7 @@ Our components already have `.test.tsx` files. Now we just need to make sure we'
 
 Remember how to pass props to a component in tests? Here's an example we looked at elsewhere:
 
-```JavaScript
+```TSX
 	it(`Given the required props,
 		When the component is rendered,
 		Then the appointment description should be present`, () => {
@@ -47,7 +47,7 @@ Reminder of the validation rules:
 
 So, for example, there might be a test that passes correct props to Species Name:
 
-```JavaScript
+```TSX
 const validSpeciesName : SpeciesNameProps = { speciesName: 'Human', /* other props here*/ };
 	render(<SpeciesName {...validSpeciesName} />);
 		expect(
@@ -65,4 +65,4 @@ The Earth is saved! 🌍💃🕺🥳 Have a well-deserved break. ☕
 
 Form validation can get very complex, and there are many ways to approach it. I'm sure that if you made it this far you can see some of the drawbacks of this approach!
 
-If you're feeling brave, you can take things just a little further with some extensions in [Activity 7 - This Time It's A Bit Harder](./activity_7-extension.md)
+If you're feeling brave, you can take things just a little further with some extensions in [Activity 7 - This Time It's A Bit Harder](./activity_7_extension.md)

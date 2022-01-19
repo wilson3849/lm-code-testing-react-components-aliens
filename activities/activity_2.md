@@ -24,6 +24,6 @@ On the other hand, you could aim to create a generic `<TextInput/>` component wh
 
 What about the validation messages? They could be a separate, shared component that each input component calls with a particular error message. Or they could be part of the input components themselves - this would involve more repetition, but might be easier to get started with.
 
-You might change your mind on component as you go - that's fine! The important thing is to have thought about these trade-offs a bit before going in. We can always refactor later!
+You might change your mind about components as you go - that's fine! The important thing is to have thought about these trade-offs a bit before going in. We can always refactor later!
 
 Having made a plan, let's write some code in [Activity 3](./activity_3.md) 😸
