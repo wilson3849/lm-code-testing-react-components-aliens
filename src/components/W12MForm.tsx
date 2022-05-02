@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import W12MHeader from './W12MHeader';
-import FrmInput from './TextInput'
+import FrmInput from './InputBuilder'
 import { getSavedValue } from "../share/useDataStorage"
 import './W12MForm.css';
 
@@ -10,7 +10,6 @@ export const ViewSubmitStatusContext = React.createContext<boolean>(true);
 export interface FormDef {
     valueID: string;
     labelText: string;
-    inputType: string;
     placeHolder: string;	
 }
 
@@ -20,31 +19,26 @@ const W12MForm = () => {
 		{
 			valueID: 'species',
 			labelText: 'Species Name',
-			inputType: 'text',
 			placeHolder: 'enter species name'
 		},
 		{
 			valueID: 'planet',
 			labelText: 'Planet Name',
-			inputType: 'text',
 			placeHolder: 'enter planet name'
 		},
 		{
 			valueID: 'noOfBeing',
 			labelText: 'Number of beings',
-			inputType: 'text',
 			placeHolder: 'input number of being'
 		},
 		{
 			valueID: 'robotCheck',
 			labelText: 'What is 2 + 2',
-			inputType: 'text',
-			placeHolder: 'input number of being'
+			placeHolder: ''
 		},		
 		{
 			valueID: 'reasonForSparing',
 			labelText: 'Reason for sparing',
-			inputType: 'textarea',
 			placeHolder: 'enter reason for sparing'
 		}		
 	]
@@ -100,7 +94,6 @@ const W12MForm = () => {
 				formMasterDatas.map((formMasterData)	=> (	
 				<FrmInput valueID={formMasterData.valueID}
 							labelText={formMasterData.labelText}
-							inputType={formMasterData.inputType}
 							placeHolder={formMasterData.placeHolder} />
 				))
 			}

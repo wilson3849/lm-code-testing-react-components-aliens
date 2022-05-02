@@ -1,13 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import useDataStorage from "../share/useDataStorage"
 import ErrorMessage from './ErrorMessage'
 import { validate } from './dataValidation'
-import { FormDef, UpdateSubmitStatusContext, ViewSubmitStatusContext } from './W12MForm'
+import { FormDef } from './W12MForm'
 
+const FrmInput : React.FC<FormDef> = ({valueID, labelText, placeHolder}) => {
 
-const FrmInput : React.FC<FormDef> = ({valueID, labelText, inputType, placeHolder}) => {
-
-    const setFormSubmit = useContext(UpdateSubmitStatusContext);
     const [ valueSpecies, setValueSpecies ] = useDataStorage('species', '')
     const [ validateSpecies, setvalidateSpecies ] = useDataStorage('validateSpecies', false)
     const [ valuePlanet, setValuePlanet ] = useDataStorage('planet', '')
@@ -141,12 +139,6 @@ const FrmInput : React.FC<FormDef> = ({valueID, labelText, inputType, placeHolde
                 <div>
                     <select id={valueID} 
                             aria-label={valueID} 
-                            onBlur={(e) => {
-                                const errorMsg = validate(e.target.value, valueID)
-                                setValueRobotCheck(e.target.value)
-                                setvalidateRobotCheck((errorMsg === '') ? true : false) 
-                                setError(errorMsg);
-                            }}
                             onChange={(e) => {
                                 const errorMsg = validate(e.target.value, valueID)
                                 setValueRobotCheck(e.target.value)

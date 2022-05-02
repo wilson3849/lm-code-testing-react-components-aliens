@@ -1,7 +1,4 @@
 export const validate:(value:string, fieldID:string) => string | string = (value, fieldID) => {
-
-
-
     switch (fieldID) {
         
         case "species":
