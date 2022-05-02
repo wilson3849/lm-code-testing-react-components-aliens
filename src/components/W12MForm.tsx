@@ -42,22 +42,9 @@ const W12MForm = () => {
 			placeHolder: 'enter reason for sparing'
 		}		
 	]
-
-	const [ formSubmit, setFormSubmit] = useState<boolean>(true);
-
 	const [ response, setResponse ] = useState<string>('');
 
-
 	function submitForm() {
-		//onElementChange();
-		
-		console.log(getSavedValue('species', ''))
-		console.log(getSavedValue('planet', ''))
-		console.log(getSavedValue('noOfBeing', ''))
-		console.log(getSavedValue('robotCheck', ''))
-		console.log(getSavedValue('reasonForSparing', ''))
-
-		console.log("status = " + formSubmit.toString())
 
 		const confirmSubmit = (getSavedValue('validSpecies', '') &&
 								getSavedValue('validatePlanet', '') &&
@@ -69,9 +56,7 @@ const W12MForm = () => {
 		${getSavedValue('planet', '')}, 
 		${getSavedValue('noOfBeing', '')}, 
 		${getSavedValue('robotCheck', '')},
-		${getSavedValue('reasonForSparing', '')}}`)
-
-		console.log("confirmSubmit = " + confirmSubmit.toString())
+		${getSavedValue('reasonForSparing', '')} }`)
 
 		setResponse(confirmSubmit ? `Your application for (${getSavedValue('species', '')}) is submitted. ${confirmMessage}`  : 'Your information is incompleted, Please check and submit again.')
 
@@ -83,31 +68,23 @@ const W12MForm = () => {
 			<div>
 			<W12MHeader />
 			</div>
-			<div className='SubmitForm'>
-			<ViewSubmitStatusContext.Provider value={formSubmit}>
-			<UpdateSubmitStatusContext.Provider value={setFormSubmit}>
 			<div>
 				Application Form
-			</div>		
-			<div>
-			{
-				formMasterDatas.map((formMasterData)	=> (	
-				<FrmInput valueID={formMasterData.valueID}
-							labelText={formMasterData.labelText}
-							placeHolder={formMasterData.placeHolder} />
-				))
-			}
-			</div>
-			<div>
-			{
-				response
-			}
-			</div>
-			<div>
-				<button className="w12MForm-submit-button" onClick={submitForm}>Submit</button>
-			</div>
-			</UpdateSubmitStatusContext.Provider>
-			</ViewSubmitStatusContext.Provider>
+			</div>				
+			<div className='SubmitForm'>
+				<div>
+				{	formMasterDatas.map((formMasterData)	=> (	
+					<FrmInput valueID={formMasterData.valueID}
+								labelText={formMasterData.labelText}
+								placeHolder={formMasterData.placeHolder} />
+					))}
+				</div>
+				<div>
+				{response}
+				</div>
+				<div>
+					<button className="w12MForm-submit-button" onClick={submitForm}>Submit</button>
+				</div>
 			</div>
 		</section>
 	);

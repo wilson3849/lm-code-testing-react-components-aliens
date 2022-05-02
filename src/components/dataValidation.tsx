@@ -20,7 +20,7 @@ export const validate:(value:string, fieldID:string) => string | string = (value
 
         case "robotCheck":
             if (value !== '4')
-            return ('Number of being cannot be blank.')
+            return ('Correct answer must be provided.')
             return ''
 
         case "reasonForSparing":
