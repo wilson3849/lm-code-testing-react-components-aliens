@@ -1,4 +1,7 @@
 export const validate:(value:string, fieldID:string) => string | string = (value, fieldID) => {
+
+
+
     switch (fieldID) {
         
         case "species":
@@ -14,7 +17,7 @@ export const validate:(value:string, fieldID:string) => string | string = (value
         case "noOfBeing":
             if (value.trim().length === 0) 
                 return ('Number of being cannot be blank.')
-            if (Number.isInteger(value.trim()))
+            if (!/^\d+$/.test(value))
                 return ('Number of being must input a number.') 
             return '' 
 
@@ -22,6 +25,11 @@ export const validate:(value:string, fieldID:string) => string | string = (value
             if (value !== '4')
             return ('Number of being cannot be blank.')
             return ''
+
+        case "reasonForSparing":
+            if (value.trim().length === 0) 
+                return ('Reason for sparing cannot be blank.')
+            return ''             
 
         default:
             return ''

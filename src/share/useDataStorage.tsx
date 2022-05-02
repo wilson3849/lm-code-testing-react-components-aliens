@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-const getSavedValue = (key:string, initValue:any) => {
-  const savedValue = JSON.parse(localStorage.getItem(key) || initValue)
+export const getSavedValue = (key:string, initValue:any) => {
+  const savedValue = JSON.parse(localStorage.getItem(key) || '{}')
   if (savedValue) return savedValue
   return initValue
 }
